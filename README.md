@@ -4,6 +4,7 @@
 
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
+gob (aka G.O.B) magically vanishes lines from your console.
 
 ## Install
 
