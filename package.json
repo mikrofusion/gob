@@ -1,9 +1,9 @@
 {
-  "name": "GOB",
-  "version": "0.0.1",
+  "name": "gob",
+  "version": "0.0.4",
   "author": "Mike Groseclose",
   "email": "mike.groseclose@gmail.com",
-  "description": "G.O.B.",
+  "description": "gob (aka G.O.B) magically vanishes lines from your console.",
   "homepage": "http://github.com/mikegroseclose/gob",
   "author": {
     "name": "Mike Groseclose",
@@ -11,6 +11,12 @@
     "url": "http://mikegroseclose.com"
   },
   "keywords": [
+    "gob",
+    "g.o.b.",
+    "console",
+    "terminal",
+    "vanish",
+    "erase"
   ],
   "main": "dist/index.js",
   "repository": {
