@@ -1,4 +1,4 @@
-var clearScreenDown, moveCursor, readline, shimOutput, util, _lines,
+var clearScreenDown, moveCursor, readline, shimOutput, util, _initialized, _lines,
   __slice = [].slice;
 
 readline = require('readline');
@@ -15,6 +15,8 @@ clearScreenDown = function() {
 
 _lines = 0;
 
+_initialized = false;
+
 shimOutput = function(output) {
   output._originalWrite = output.write;
   return output.write = function() {
@@ -27,6 +29,7 @@ shimOutput = function(output) {
 };
 
 exports.init = function(output) {
+  _initialized = true;
   return shimOutput(output);
 };
 
@@ -35,6 +38,9 @@ exports.reset = function() {
 };
 
 exports.vanish = function() {
+  if (_initialized == null) {
+    throw new Error('');
+  }
   if (_lines != null) {
     moveCursor(0, -_lines);
     clearScreenDown();
