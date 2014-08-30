@@ -4,10 +4,10 @@
 
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
-gob (aka G.O.B) magically vanishes lines from your output stream.
+gob (aka G.O.B) magically vanishes lines from your console.
 
 
-![GOB](../images/gob.jpg?raw=true)
+![GOB](../images/gob.png?raw=true)
 
 ## Install
 
@@ -66,7 +66,7 @@ baz
 
 Additional examples are included in the examples folder.
 
-The examples can be ran via the following (replace <example> with the name of the example).
+The examples can be ran via the following command (replace <example> with the name of the example).
 
 ```
 gulp compile && coffee examples/<example>.coffee --n
