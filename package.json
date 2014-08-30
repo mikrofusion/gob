@@ -3,7 +3,7 @@
   "version": "0.0.5",
   "author": "Mike Groseclose",
   "email": "mike.groseclose@gmail.com",
-  "description": "gob (aka G.O.B) magically vanishes lines from your console.",
+  "description": "gob (aka G.O.B) magically vanishes lines from your output stream.",
   "homepage": "http://github.com/mikegroseclose/gob",
   "author": {
     "name": "Mike Groseclose",

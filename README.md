@@ -4,7 +4,7 @@
 
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
-gob (aka G.O.B) magically vanishes lines from your console.
+gob (aka G.O.B) magically vanishes lines from your output stream.
 
 
 ![GOB](../images/gob.jpg?raw=true)
