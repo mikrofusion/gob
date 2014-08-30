@@ -6,6 +6,9 @@
 
 gob (aka G.O.B) magically vanishes lines from your console.
 
+
+![GOB](../images/gob.png?raw=true)
+
 ## Install
 
 ```bash
