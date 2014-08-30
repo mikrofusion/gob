@@ -26,13 +26,13 @@ class Gob
       _lines += count
       output._originalWrite args...
 
-  reset: -> _lines = 0
+  set: -> _lines = 0
 
   vanish: ->
     if _lines?
       moveCursor(0, -_lines)
       clearScreenDown()
-    @reset()
+    @set()
 
   _lines: -> _lines
 

@@ -41,7 +41,7 @@ Gob = (function() {
     };
   }
 
-  Gob.prototype.reset = function() {
+  Gob.prototype.set = function() {
     return _lines = 0;
   };
 
@@ -50,7 +50,7 @@ Gob = (function() {
       moveCursor(0, -_lines);
       clearScreenDown();
     }
-    return this.reset();
+    return this.set();
   };
 
   Gob.prototype._lines = function() {

@@ -21,10 +21,10 @@ describe 'Gob', ->
       it 'keeps track of the number of newlines written', ->
         expect(gob._lines()).to.eq 5
 
-    describe 'reset', ->
+    describe 'set', ->
       before ->
         output.write '\n\n\n\n'
-        gob.reset()
+        gob.set()
 
       it 'sets the number of lines to 0', ->
         expect(gob._lines()).to.eq 0

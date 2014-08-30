@@ -1,15 +1,15 @@
 gob = require('../dist/index.js').gob(process.stdout)
 
-readline = require 'readline'
+console.log 'foo'
+console.log 'bar'
 
-rl = readline.createInterface(process.stdin, process.stdout)
+gob.set()
 
-rl.setPrompt 'gob> '
-rl.prompt()
+console.log 'erase me 1'
+console.log 'erase me 2'
+console.log 'erase me 3'
 
-rl.on('line', (line) ->
-  if line.trim() == 'clear'
-    gob.vanish()
-  rl.prompt()
-).on 'close', ->
-  process.exit 0
+gob.vanish()
+
+console.log 'biz'
+console.log 'baz'
