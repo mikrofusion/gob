@@ -1,6 +1,6 @@
 {
   "name": "gob",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "Mike Groseclose",
   "email": "mike.groseclose@gmail.com",
   "description": "gob (aka G.O.B) magically vanishes lines from your console.",
