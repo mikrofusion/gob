@@ -1,4 +1,4 @@
-var clearScreenDown, moveCursor, readline, shimOutput, util, _initialized, _lines,
+var Gob, clearScreenDown, moveCursor, readline, util,
   __slice = [].slice;
 
 readline = require('readline');
@@ -6,44 +6,66 @@ readline = require('readline');
 util = require('util');
 
 moveCursor = function(x, y) {
-  return readline.moveCursor(process.stdin, x, y);
+  if (process.env.NODE_ENV === 'TEST') {
+    exports.moveCursorX = x;
+    return exports.moveCursorY = y;
+  } else {
+    return readline.moveCursor(process.stdin, x, y);
+  }
 };
 
 clearScreenDown = function() {
-  return readline.clearScreenDown(process.stdin);
+  if (process.env.NODE_ENV === 'TEST') {
+    return exports.clearScreenDownCalled = true;
+  } else {
+    return readline.clearScreenDown(process.stdin);
+  }
 };
 
-_lines = 0;
+Gob = (function() {
+  var _lines;
 
-_initialized = false;
+  _lines = 0;
 
-shimOutput = function(output) {
-  output._originalWrite = output.write;
-  return output.write = function() {
-    var args, count;
-    args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
-    count = args[0].split('\n').length - 1;
-    _lines += count;
-    return output._originalWrite.apply(output, args);
+  function Gob(output) {
+    if (output == null) {
+      throw new Error('gob requires an output stream.');
+    }
+    output._originalWrite = output.write;
+    output.write = function() {
+      var args, count;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      count = args[0].split('\n').length - 1;
+      _lines += count;
+      return output._originalWrite.apply(output, args);
+    };
+  }
+
+  Gob.prototype.reset = function() {
+    return _lines = 0;
   };
-};
 
-exports.init = function(output) {
-  _initialized = true;
-  return shimOutput(output);
-};
+  Gob.prototype.vanish = function() {
+    if (_lines != null) {
+      moveCursor(0, -_lines);
+      clearScreenDown();
+    }
+    return this.reset();
+  };
 
-exports.reset = function() {
-  return _lines = 0;
-};
+  Gob.prototype._lines = function() {
+    return _lines;
+  };
 
-exports.vanish = function() {
-  if (_initialized == null) {
-    throw new Error('');
+  return Gob;
+
+})();
+
+exports.gob = function(output) {
+  if (process.env.NODE_ENV === 'TEST') {
+    exports.clearScreenDownCalled = void 0;
+    exports.moveCursorX = void 0;
+    exports.moveCursorY = void 0;
   }
-  if (_lines != null) {
-    moveCursor(0, -_lines);
-    clearScreenDown();
-  }
-  return exports.reset();
+  return new Gob(output);
 };

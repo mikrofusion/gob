@@ -1,6 +1,4 @@
-gob = require('../dist/index.js')
-
-gob.init(process.stdout)
+gob = require('../dist/index.js').gob(process.stdout)
 
 readline = require 'readline'
 
