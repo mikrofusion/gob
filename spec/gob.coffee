@@ -7,10 +7,11 @@ describe 'Gob', ->
   describe 'when given an output stream', ->
     output = undefined
     gob = undefined
+    result = undefined
 
     before ->
       output = {
-        write: () ->
+        write: (str) -> result = str
         columns: 10
       }
       gob = Gob.gob(output)
@@ -18,6 +19,7 @@ describe 'Gob', ->
     describe 'when writing to the output stream', ->
       describe 'when the lines written does not wrap the console', ->
         before ->
+          result = ''
           gob.set()
           output.write '\n\n\n\n'
           output.write ''

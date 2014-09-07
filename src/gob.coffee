@@ -21,7 +21,6 @@ class Gob
   constructor: (output) ->
     throw new Error 'gob requires an output stream.' if not output?
 
-
     output._gobOriginalWrite = output.write
     output.write = (args...) ->
       count = args[0].split('\n').length - 1
