@@ -1,9 +1,11 @@
-var Gob, clearScreenDown, moveCursor, readline, util,
+var Gob, breakwrap, clearScreenDown, moveCursor, readline, util,
   __slice = [].slice;
 
 readline = require('readline');
 
 util = require('util');
+
+breakwrap = require('breakwrap');
 
 moveCursor = function(x, y) {
   if (process.env.NODE_ENV === 'TEST') {
@@ -31,14 +33,15 @@ Gob = (function() {
     if (output == null) {
       throw new Error('gob requires an output stream.');
     }
-    output._originalWrite = output.write;
+    output._gobOriginalWrite = output.write;
     output.write = function() {
       var args, count;
       args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
       count = args[0].split('\n').length - 1;
       _lines += count;
-      return output._originalWrite.apply(output, args);
+      return output._gobOriginalWrite.apply(output, args);
     };
+    breakwrap(output);
   }
 
   Gob.prototype.set = function() {

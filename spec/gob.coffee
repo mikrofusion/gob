@@ -9,17 +9,30 @@ describe 'Gob', ->
     gob = undefined
 
     before ->
-      output = { write: () -> }
+      output = {
+        write: () ->
+        columns: 10
+      }
       gob = Gob.gob(output)
 
     describe 'when writing to the output stream', ->
-      before ->
-        output.write '\n\n\n\n'
-        output.write ''
-        output.write '\n'
+      describe 'when the lines written does not wrap the console', ->
+        before ->
+          gob.set()
+          output.write '\n\n\n\n'
+          output.write ''
+          output.write '\n'
 
-      it 'keeps track of the number of newlines written', ->
-        expect(gob._lines()).to.eq 5
+        it 'keeps track of the number of newlines written', ->
+          expect(gob._lines()).to.eq 5
+
+      describe 'when the lines written does wraps the console', ->
+        before ->
+          gob.set()
+          output.write 'longer than 10 characters'
+
+        it 'breaks the wrap and keeps track of the number of newlines written', ->
+          expect(gob._lines()).to.eq 2
 
     describe 'set', ->
       before ->
@@ -41,8 +54,6 @@ describe 'Gob', ->
 
       it 'clears the screen down', ->
         expect(Gob.clearScreenDownCalled).to.eq true
-
-
 
   describe 'when NOT given an output stream', ->
     it 'throws an error when NOT given an output stream', ->

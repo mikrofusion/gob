@@ -1,5 +1,6 @@
 readline = require 'readline'
 util = require 'util'
+breakwrap = require('breakwrap')
 
 moveCursor = (x, y) ->
   if process.env.NODE_ENV == 'TEST'
@@ -20,11 +21,14 @@ class Gob
   constructor: (output) ->
     throw new Error 'gob requires an output stream.' if not output?
 
-    output._originalWrite = output.write
+
+    output._gobOriginalWrite = output.write
     output.write = (args...) ->
       count = args[0].split('\n').length - 1
       _lines += count
-      output._originalWrite args...
+      output._gobOriginalWrite args...
+
+    breakwrap output
 
   set: -> _lines = 0
 
