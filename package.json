@@ -1,6 +1,6 @@
 {
   "name": "gob",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Mike Groseclose",
   "email": "mike.groseclose@gmail.com",
   "description": "gob (aka G.O.B) magically vanishes lines from your output streams.",
@@ -31,7 +31,7 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "breakwrap": "1.0.0"
+    "breakwrap": "1.0.1"
   },
   "devDependencies": {
     "gulp": "^3.5.6",
