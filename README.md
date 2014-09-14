@@ -79,5 +79,5 @@ gulp compile && coffee examples/<example>.coffee --n
 [npm-url]: https://npmjs.org/package/gob
 [npm-image]: https://badge.fury.io/js/gob.png
 
-[travis-url]: http://travis-ci.org/mikegroseclose/gob
-[travis-image]: https://secure.travis-ci.org/mikegroseclose/gob.png?branch=master
+[travis-url]: http://travis-ci.org/mikrofusion/gob
+[travis-image]: https://secure.travis-ci.org/mikrofusion/gob.png?branch=master

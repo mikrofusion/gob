@@ -4,11 +4,10 @@
   "author": "Mike Groseclose",
   "email": "mike.groseclose@gmail.com",
   "description": "gob (aka G.O.B) magically vanishes lines from your output streams.",
-  "homepage": "http://github.com/mikegroseclose/gob",
+  "homepage": "http://github.com/mikrofusion/gob",
   "author": {
     "name": "Mike Groseclose",
-    "email": "mike.groseclose@gmail.com",
-    "url": "http://mikegroseclose.com"
+    "email": "mike.groseclose@gmail.com"
   },
   "keywords": [
     "gob",
@@ -21,7 +20,7 @@
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mikegroseclose/gob.git"
+    "url": "git://github.com/mikrofusion/gob.git"
   },
   "scripts": {
     "test": "./runtests",
@@ -47,6 +46,6 @@
   },
   "licenses": [{
     "type": "MIT",
-    "url": "http://github.com/mikegroseclose/gob/raw/master/LICENSE"
+    "url": "http://github.com/mikrofusion/gob/raw/master/LICENSE"
   }]
 }
